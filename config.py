@@ -1,5 +1,7 @@
 import os
+import re
 from functools import lru_cache
+from urllib.parse import quote_plus
 
 from dotenv import load_dotenv
 from motor.motor_asyncio import AsyncIOMotorClient
@@ -29,7 +31,16 @@ class Settings:
         print(f"✅ Gemini client ready — model: {self.GEMINI_MODEL}")
 
     def get_mongo_client(self) -> AsyncIOMotorClient:
-        return AsyncIOMotorClient(self.MONGODB_URI)
+    # Hardcode encoded URI directly to avoid parsing issues
+        from urllib.parse import quote_plus
+    
+        user = "owncoach"
+        password = quote_plus("Test@123")  # encodes @ to %40
+        host = "owncoach.hisqa9s.mongodb.net/?appName=owncoach"
+    
+        encoded_uri = f"mongodb+srv://{user}:{password}@{host}"
+        return AsyncIOMotorClient(encoded_uri)
+
 
 
 @lru_cache()
