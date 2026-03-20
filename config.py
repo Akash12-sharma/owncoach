@@ -18,7 +18,7 @@ class Settings:
     GEMINI_MODEL: str = "gemini-2.0-flash"
 
     def __init__(self) -> None:
-        self.MONGODB_URI = os.getenv("MONGODB_URI", "mongodb+srv://owncoach:Test@123@owncoach.hisqa9s.mongodb.net/?appName=owncoach")
+        self.MONGODB_URI = os.getenv("MONGODB_URI", "mongodb+srv://owncoach:TestPassword123@owncoach.r1ramvv.mongodb.net/?appName=owncoach")
         self.MONGODB_DB = os.getenv("MONGODB_DB", "fitnesswon")
         self.GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
         self.GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")
